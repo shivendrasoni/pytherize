@@ -19,7 +19,6 @@ class UserModel(BaseModel):
     def __init__(self, db: SQLDB=None):
         BaseModel.__init__(self, db)
         db.migrate_models(self.doc_type)
-        db.migrate_models(ElementTypes.USER_ROLE_MAPPING)
 
     def save(self, user: User):
         saved_user = self.db.insert_element_in_db(self.doc_type, user)
@@ -46,5 +45,6 @@ class UserModel(BaseModel):
 
         return [UserRoleMapping(**row) for row in results]
 
-
+    def remove(self, user: User):
+        pass
 

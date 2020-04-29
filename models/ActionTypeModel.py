@@ -8,7 +8,6 @@ class ActionTypeModel(BaseModel):
 
     def __init__(self, db):
         BaseModel.__init__(self, db)
-        db.migrate_models(self.doc_type)
 
     def save(self, action: ActionType):
         return self.db.insert_element_in_db(self.doc_type, action)
@@ -16,3 +15,6 @@ class ActionTypeModel(BaseModel):
     def get_by_id(self, action_id: str):
         action = self.db.get_element_by_id(self.doc_type, action_id)
         return ActionType(**action)
+
+    def remove(self, action:ActionType):
+        pass

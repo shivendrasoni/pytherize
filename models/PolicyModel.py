@@ -17,9 +17,6 @@ class PolicyModel(BaseModel):
 
     def __init__(self, db=None):
         BaseModel.__init__(self, db)
-        db.migrate_models(self.doc_type)
-        db.migrate_models(ElementTypes.POLICY_RESOURCE_ACTION_MAPPING)
-        db.migrate_models(ElementTypes.POLICY_ROLE_MAPPING)
 
     def find_policy_by_action_and_resource_id(self, resource_id=None, action_id=None)-> PolicyResourceActionMapping:
         fields = {
@@ -51,3 +48,6 @@ class PolicyModel(BaseModel):
     def get_by_id(self, policy_id):
         policy = self.db.get_element_by_id(ElementTypes.POLICY, policy_id)
         return Policy(**policy)
+
+    def remove(self, policy:Policy):
+        pass

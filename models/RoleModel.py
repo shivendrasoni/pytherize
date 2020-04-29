@@ -14,7 +14,6 @@ class RoleModel(BaseModel):
 
     def __init__(self, db):
         BaseModel.__init__(self, db)
-        db.migrate_models(self.doc_type)
         self.policies = []
 
     def get_by_id(self, role_id) -> 'Role':
@@ -67,4 +66,5 @@ class RoleModel(BaseModel):
         created_role = self.db.insert_element_in_db(self.doc_type, role)
         return created_role
 
-
+    def remove(self, role: Role):
+        pass

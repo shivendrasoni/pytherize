@@ -1,0 +1,4 @@
+class BaseExceptionWrapper(Exception):
+
+
+    pass
